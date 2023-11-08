@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 
 export default function Alltransactions() {
-    const transactionsList = [
+    const [transactionsList, setTransactionsList] = useState([
       {
         id: 1,
         item: "Salary",
@@ -33,8 +33,13 @@ export default function Alltransactions() {
         description: "Money received back after returning an item or service",
         amount: 50
       }                                
-    ]
+    ])
 
+    const handleDelete = (id) => {
+      const filteredTransactions = transactionsList.filter((transaction) => transaction.id !== id);
+      setTransactionsList(filteredTransactions);
+    };
+    
 
    
 
@@ -47,8 +52,8 @@ export default function Alltransactions() {
         <div className='p-5'>
               {transactionsList.map((transactions) => (
               
-            <div className='bg-green-50 h-24 rounded-md shadow-sm  p-5 flex justify-between'>
-              <div key={transactions.id}>
+            <div className='bg-green-50 h-24 rounded-md shadow-sm  p-5 flex justify-between mb-5'>
+              <div  key={transactions.id}>
               <h4 className='font-bold'>{transactions.item}</h4>
               <p>{transactions.description}</p>
               </div>
@@ -56,7 +61,7 @@ export default function Alltransactions() {
               <h3 className='font-bold'>{transactions.amount}</h3>
               <p>amount</p>
               </div>
-              <button className='cancel '  ><h5>X</h5></button>
+              <button onClick={() => handleDelete(transactions.id)} className='cancel '  ><h5>X</h5></button>
             </div>
             
               ))}

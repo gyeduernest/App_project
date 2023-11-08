@@ -1,0 +1,73 @@
+import React from 'react'
+import { useState } from 'react'
+
+export default function Alltransactions() {
+  const [transactionsList, setTransactionsList] = useState[
+    {
+      id: 1,
+      item: "Salary",
+      description: "Payment from employer",
+      amount: 2000
+    },
+    {
+      id: 2,
+      item: "Freelance income",
+      description: "Payment from client for freelance work",
+      amount: 500
+    },
+    {
+      id: 3,
+      item: "Investment income",
+      description: "Dividends or interest from investments",
+      amount: 100
+    },
+    {
+      id: 4,
+      item: "Gift",
+      description: "Money received as a gift",
+      amount: 250
+    },
+    {
+      id: 5,
+      item: "Refund",
+      description: "Money received back after returning an item or service",
+      amount: 50
+    }                                
+  ]
+
+  const deleteItem = (id) =>{
+    const filteredTransactions = transactionsList.filter((transaction) => transaction.id !== id);
+setTransactionsList(filteredTransactions);
+};
+return (
+<div>
+<div className=''>
+  <h4 className='text-center font-bold'>All transactions</h4>
+  <div className='p-5'>
+        {transactionsList.map((transactions) => (             
+      <div className='bg-green-50 h-24 rounded-md shadow-sm  p-5 flex justify-between mb-5'>
+        <div  key={transactions.id}>
+        <h4 className='font-bold'>{transactions.item}</h4>
+        <p>{transactions.description}</p>
+        </div>
+        <div>
+        <h3 className='font-bold'>{transactions.amount}</h3>
+        <p>amount</p>
+        </div>
+        <button onClick={() => handleDelete(transactions.id)} className='cancel '  ><h5>X</h5></button>
+      </div>
+      
+        ))}
+  </div>
+
+</div>
+
+</div>
+)
+        
+  }
+
+
+ 
+
+
