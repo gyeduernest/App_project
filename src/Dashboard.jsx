@@ -2,6 +2,7 @@ import React from 'react'
 import TotalBalance from './Components/TotalBalance'
 import Alltransactions from './Components/Alltransactions'
 import Addtransaction from './Components/Addtransaction'
+import IncomeExpense from './Components/IncomeExpense'
 
 export default function Dashboard() {
 
@@ -14,9 +15,9 @@ export default function Dashboard() {
 
       <TotalBalance/>
 
-      <Alltransactions/>  
-
-        <Addtransaction/>
+      <IncomeExpense/>
+      <Alltransactions/>
+      <Addtransaction/>
             
       
       </div>
