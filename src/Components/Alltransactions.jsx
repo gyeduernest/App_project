@@ -1,37 +1,55 @@
 import React from 'react'
 import { useState } from 'react'
+import IncomeExpense from './IncomeExpense';
+import TotalBalance from './TotalBalance';
 
 export default function Alltransactions() {
-    const [transactionsList, setTransactionsList] = useState([ 
-    ])
+  const [transactionsList, setTransactionsList] = useState([ 
+    
+    
+  ])
   
   const [item, setitem] = useState("")
   const [amount, setamount] = useState("")
   const [description, setdescription] = useState("")
-
-    const addTransaction = (e) => {
-      e.preventDefault();
-      
+  const addTransaction = (e) => {
+    e.preventDefault();
+    
       const newTransaction = {
         id: transactionsList.length + 1,
         item,
         amount,
         description,
       };
-  
+      
       setTransactionsList([...transactionsList, newTransaction]);
-  
+      
+      
     };
+    const totalExpense = transactionsList.filter(transactionsList => transactionsList.amount < 0).reduce((accumulator, transactionsList) => accumulator - Number(transactionsList.amount), 0);
 
+    const totalIncome = transactionsList.filter(transactionsList => transactionsList.amount >= 0).reduce((accumulator, transactionsList) => accumulator + Number(transactionsList.amount), 0);
+    
+    
+    
+    
     const handleDelete = (id) => {
-      const filteredTransactions = transactionsList.filter((transaction) => transaction.id !== id);
+    const filteredTransactions = transactionsList.filter((transaction) => transaction.id !== id);
       setTransactionsList(filteredTransactions);
     };
+    
+    
+
+    
+    const balance = totalIncome - totalExpense;
+
 
     return (
-    <div>
-      <div className=''>
-        <div className='flex justify-center items-center gap-8'><h4 className='text-center font-bold'>All transactions</h4><p>(delete the first sample)</p></div>
+      <div>
+        <TotalBalance totalBalance={balance}/>
+        <IncomeExpense totalIncome={totalIncome} totalExpense={totalExpense}/>
+       <div className=''>
+        <div className='flex justify-center items-center gap-8'><h4 className='text-center font-bold'>All transactions</h4></div>
         <div className='p-5'>
               {transactionsList.map((transactions) => (
               
