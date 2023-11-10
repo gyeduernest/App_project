@@ -8,19 +8,19 @@ export default function IncomeExpense({totalIncome, totalExpense}) {
   return (
     <div>
 
-        <div className=''>
-          <div className='bg-blue-100  shadow-lg  rounded-lg flex justify-between items-center p-10'>
-          <div className=''>
-            <h4>Income</h4>
+       
+            <div className='Income '>
+            <h4 className='text-green-700 font-bold'>Income</h4>
             <h4>{totalIncome}</h4>
-          </div>
-          <div>
-            <h4>Expense</h4>
-            <h4>{totalExpense}</h4>
-          </div>
-          </div>
-        </div>
+            </div>
+          
+          <div className='Expense'>
 
+
+            <h4 className='text-red-700 font-bold'>Expense</h4>
+            <h4>{totalExpense}</h4>
+          
+          </div>
     </div>
   )
 }

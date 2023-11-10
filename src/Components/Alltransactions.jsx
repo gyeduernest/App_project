@@ -45,18 +45,18 @@ export default function Alltransactions() {
 
 
     return (
-      <div>
+      <div className='w-96 mx-auto'>
         <TotalBalance totalBalance={balance}/>
         <IncomeExpense totalIncome={totalIncome} totalExpense={totalExpense}/>
        <div className=''>
-        <div className='flex justify-center items-center gap-8'><h4 className='text-center font-bold'>All transactions</h4></div>
-        <div className='p-5'>
+        <div className=''><h4 className='text-center font-bold'>All transactions</h4></div>
+        <div className=''>
               {transactionsList.map((transactions) => (
               
-            <div className='bg-green-50 h-24 rounded-md shadow-sm  p-5 flex justify-between mb-5'>
+            <div className='Items flex'>
               <div  key={transactions.id}>
-              <h4 className='font-bold'>{transactions.item}</h4>
-              <p>{transactions.description}</p>
+              <h4 className='font-bold mr-40'>{transactions.item}</h4>
+              <p className=''>{transactions.description}</p>
               </div>
               <div>
               <h3 className='font-bold'>{transactions.amount}</h3>
@@ -67,19 +67,19 @@ export default function Alltransactions() {
             
               ))}
 
-<form action="" onSubmit={addTransaction} >
-        <div className='p-5'>
+<form action="" onSubmit={addTransaction} className='form' >
+        <div className=''>
           <label htmlFor="item"><h5 className='font-bold'>Add Item</h5></label>
           <p>Add an item for it to be calculated</p>
           <input type="text" id="item" className='input' placeholder='eg. food' onChange={(e) => (setitem(e.target.value))} value={item} />
-          <label htmlFor="amount"><h5 className='font-bold'>Amount</h5></label>
-          <input type="number" name='amount' id='amount' className='input' onChange={(e) => (setamount(e.target.value))} value={amount} />
           <label htmlFor="item"><h5 className='font-bold'>Comment</h5></label>
           <p>Give a brief Description of the item</p>
           <textarea type="text" id="item" className='textarea' placeholder='eg.details of food' onChange={(e) => (setdescription(e.target.value))} value={description}  />
+          <label htmlFor="amount"><h5 className='font-bold'>Amount</h5></label>
+          <input type="number" name='amount' id='amount' className='amount' onChange={(e) => (setamount(e.target.value))} value={amount} />
          </div>
-            <div className='flex justify-center items-center px-5 mt-10'>
-            <button className='bg-blue-700 rounded-md  text-white font-bold w-full h-12'>Add Transaction</button>
+            <div className='flex justify-between items-center'>
+            <button className=' bg-blue-700 rounded-md px-20 py-3 mx-auto  text-white font-bold '>Add Transaction</button>
   
             </div>          
 
