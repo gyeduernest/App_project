@@ -1,17 +1,27 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import IncomeExpense from './IncomeExpense';
 import TotalBalance from './TotalBalance';
 
+
+const STORAGE_KEY = 'transactionsList';
+
 export default function Alltransactions() {
-  const [transactionsList, setTransactionsList] = useState([ 
-    
-    
-  ])
+  const storedTransactions = JSON.parse(sessionStorage.getItem(STORAGE_KEY)) || [];
+const [transactionsList, setTransactionsList] = useState(storedTransactions);
+
   
+  
+
+
+
   const [item, setitem] = useState("")
   const [amount, setamount] = useState("")
   const [description, setdescription] = useState("")
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(transactionsList));
+  }, [transactionsList]);
+
   const addTransaction = (e) => {
     e.preventDefault();
     
@@ -53,16 +63,18 @@ export default function Alltransactions() {
         <div className=''>
               {transactionsList.map((transactions) => (
               
-            <div className='Items flex'>
-              <div  key={transactions.id}>
-              <h4 className='font-bold mr-40'>{transactions.item}</h4>
-              <p className=''>{transactions.description}</p>
-              </div>
-              <div>
-              <h3 className='font-bold'>{transactions.amount}</h3>
-              <p>amount</p>
-              </div>
-              <button onClick={() => handleDelete(transactions.id)} className='cancel '><h5>x</h5></button>
+            <div className='Items flex items-center'key={transactions.id}>
+              
+          <div className='pr-5'>
+              <h4 className=' font-bold mr-20'>{transactions.item}</h4>
+              <h5 className=''>{transactions.description}</h5>
+          </div>
+          
+          
+          <div className='flex ml-16'>
+              <h5 className='font-bold pl-5'>${transactions.amount}</h5>  
+              <button onClick={() => handleDelete(transactions.id)} className='cancel ml-10 '><h5>x</h5></button>
+          </div>
             </div>
             
               ))}
@@ -76,7 +88,8 @@ export default function Alltransactions() {
           <p>Give a brief Description of the item</p>
           <textarea type="text" id="item" className='textarea' placeholder='eg.details of food' onChange={(e) => (setdescription(e.target.value))} value={description}  />
           <label htmlFor="amount"><h5 className='font-bold'>Amount</h5></label>
-          <input type="number" name='amount' id='amount' className='amount' onChange={(e) => (setamount(e.target.value))} value={amount} />
+          <p className='text-red-500'>expenses start with a negative value</p>
+          <input type="number" name='amount' id='amount' className='input' onChange={(e) => (setamount(e.target.value))} value={amount} />
          </div>
             <div className='flex justify-between items-center'>
             <button className=' bg-blue-700 rounded-md px-20 py-3 mx-auto  text-white font-bold '>Add Transaction</button>

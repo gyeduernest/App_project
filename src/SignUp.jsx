@@ -32,7 +32,7 @@ const SignUp = () => {
 
   return ( 
     <div className='lg:flex lg:justify-center lg:items-center  py-56'>
-       <form action=""    className='justify-center items-center lg:p-5 p-5  border border-gray-500 rounded-md'>
+       <form action=""    className='justify-center items-center lg:p-5 px-5 w-96  border border-gray-500 rounded-md'>
        <div className='mb-10'>
         <h3 className='font-bold'>Sign up</h3>
         <p>create an account to access the Platform</p>
@@ -41,14 +41,14 @@ const SignUp = () => {
       <div className='mb-5'>
       <label htmlFor="email">Input email</label>
       <div>
-      <input type="email" value={email} placeholder='email' id="email" autoComplete='off' name='email'  className='input' onChange={(e) => setEmail(e.target.value)}  required/>
+      <input type="email" value={email} placeholder='email' id="email" autoComplete='on' name='email'  className='Signup-input' onChange={(e) => setEmail(e.target.value)}  required/>
       </div>
       
       </div>
       <div>
       <label htmlFor="password">Input password</label>
       <div>
-      <input type="password" placeholder='password' id="password" name='password'value={password} className='input' autoComplete='off' onChange={(e) => setPassword(e.target.value)} required />
+      <input type="password" placeholder='password' id="password" name='password'value={password} className='Signup-input' autoComplete='on' onChange={(e) => setPassword(e.target.value)} required />
       </div>
       </div>
 

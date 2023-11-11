@@ -31,7 +31,7 @@ const LogIn = () => {
 
   return ( 
     <div className='lg:flex lg:justify-center lg:items-center  py-56'>
-    <form action=""    className='justify-center items-center lg:p-5 p-5  border border-gray-500 rounded-md'>
+    <form action=""    className='justify-center items-center lg:p-5 p-5  border border-gray-500 w-96 rounded-md'>
     <div className='mb-10'>
         <h3 className='font-bold'>Log in</h3>
         <p>Log in your account to access the Platform</p>
