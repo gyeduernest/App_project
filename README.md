@@ -1,6 +1,4 @@
 # React + Vite
-Sure, I can help you create a README documentation for your app based on the provided code snippets. Here's a draft:
-
 ## App Project: A Simple Transaction Tracker
 
 ### Overview
